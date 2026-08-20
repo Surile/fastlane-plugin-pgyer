@@ -1,5 +1,9 @@
 require "faraday"
-require "faraday_middleware"
+if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new("2.0.0")
+  require "faraday/multipart"
+else
+  require "faraday_middleware"
+end
 require "timeout"
 
 module Fastlane
